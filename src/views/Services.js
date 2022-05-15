@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useServiceContext, useServiceDispatch } from 'hooks';
-import { getAllServices } from 'actions/serviceAction';
+import { getAllServices, deleteService } from 'actions/serviceAction';
 import Loader from 'components/Loader/Loader';
 
 // react-bootstrap components
@@ -51,6 +51,15 @@ function Services() {
   useEffect(() => {
     getAllServices(dispatch.serviceDispatch);
   }, [dispatch.serviceDispatch]);
+  const refreshPage = () => {
+    window.location.reload(true);
+  };
+  const handleClick = async (serviceId) => {
+    let response = await deleteService(dispatch.deleteDispatch, serviceId);
+    // refreshPage();
+
+    console.log('Delete response: ', response);
+  };
 
   return (
     <>
@@ -58,6 +67,11 @@ function Services() {
         <Row>
           <Col md="12">
             <Card className="strpied-tabled-with-hover">
+              <Link to="/admin/add-patient">
+                <Button variant="primary" className="my-2">
+                  Add a new service
+                </Button>
+              </Link>
               <Card.Header>
                 <Card.Title as="h4">List of all available services</Card.Title>
                 {/* <p className="card-category">
@@ -93,6 +107,13 @@ function Services() {
                                 >
                                   Details
                                 </Link>
+                              </Button>
+                              {' | '}
+                              <Button
+                                variant="warning"
+                                onClick={() => handleClick(serve._id)}
+                              >
+                                Delete service
                               </Button>
                             </td>
                           </tr>

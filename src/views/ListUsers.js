@@ -15,7 +15,6 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
-import { logOut } from 'actions/userActions';
 
 function ListUsers() {
   const dispatch = useUserDispatch();

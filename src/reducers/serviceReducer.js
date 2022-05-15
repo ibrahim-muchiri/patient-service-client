@@ -8,6 +8,9 @@ import {
   ADD_SERVICE_REQUEST,
   ADD_SERVICE_SUCCESS,
   ADD_SERVICE_FAIL,
+  DELETE_SERVICE_REQUEST,
+  DELETE_SERVICE_SUCCESS,
+  DELETE_SERVICE_FAIL,
 } from 'constants/serviceConstants';
 
 export const servicesInitialState = {
@@ -39,6 +42,29 @@ export const addServiceReducer = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+//delete user details
+export const deleteServiceReducer = (state = {}, action) => {
+  switch (action.type) {
+    case DELETE_SERVICE_REQUEST:
+      return {
+        loading: true,
+      };
+    case DELETE_SERVICE_SUCCESS:
+      return {
+        laoding: false,
+        message: action.payload,
+      };
+    case DELETE_SERVICE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 export const getServiceDetailReducer = (state = {}, action) => {
   switch (action.type) {
     case SERVICE_DETAIL_REQUEST:

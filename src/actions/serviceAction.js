@@ -9,6 +9,9 @@ import {
   ADD_SERVICE_REQUEST,
   ADD_SERVICE_SUCCESS,
   ADD_SERVICE_FAIL,
+  DELETE_SERVICE_REQUEST,
+  DELETE_SERVICE_SUCCESS,
+  DELETE_SERVICE_FAIL,
 } from '../constants/serviceConstants';
 
 // const API_URL = 'http://localhost:8000/api/v1/';
@@ -30,6 +33,23 @@ export const getSingleService = async (dispatch, serviceId) => {
   } catch (error) {
     dispatch({
       type: SERVICE_DETAIL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const deleteService = async (dispatch, id) => {
+  try {
+    dispatch({ type: DELETE_SERVICE_REQUEST });
+    const { data } = await axios.delete(`${API_URL}services/${id}`);
+
+    dispatch({ type: DELETE_SERVICE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: DELETE_SERVICE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
