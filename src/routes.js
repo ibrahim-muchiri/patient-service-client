@@ -3,11 +3,12 @@ import Login from './views/Login.js';
 import UserProfile from 'views/UserProfile.js';
 // import TableList from 'views/ListUsers';
 import ListUsers from 'views/ListUsers';
-import ContributionDetails from 'views/ContributionDetails';
-import AddContribution from 'views/AddContribution';
+// import ContributionDetails from 'views/ContributionDetails';
+import ServiceDetails from 'views/ServiceDetails.js';
+// import AddContribution from 'views/AddContribution';
 import AddPatient from 'views/addPatient';
-import AddService from 'views/addService';
-import Contributions from 'views/Contributions';
+// import AddService from 'views/addService';
+import Services from 'views/Services';
 import Typography from 'views/Typography.js';
 import Icons from 'views/Icons.js';
 import Maps from 'views/Maps.js';
@@ -43,18 +44,18 @@ const appRoutes = {
       path: '/services',
       name: 'Services',
       icon: 'nc-icon nc-paper-2',
-      component: Contributions,
+      component: Services,
       layout: '/admin',
       isPrivate: true,
     },
-    {
-      path: '/bookings',
-      name: 'Bookings',
-      icon: 'nc-icon nc-paper-2',
-      component: Contributions,
-      layout: '/admin',
-      isPrivate: true,
-    },
+    // {
+    //   path: '/bookings',
+    //   name: 'Bookings',
+    //   icon: 'nc-icon nc-paper-2',
+    //   component: Contributions,
+    //   layout: '/admin',
+    //   isPrivate: true,
+    // },
     // {
     //   path: '/typography',
     //   name: 'Typography',
@@ -106,23 +107,23 @@ const appRoutes = {
       isPrivate: true,
     },
     {
-      path: '/contribution-details',
+      path: '/service-details',
       hide: true,
       name: '',
       icon: 'nc-icon nc-circle-09',
-      component: ContributionDetails,
+      component: ServiceDetails,
       layout: '/admin',
       isPrivate: true,
     },
-    {
-      path: '/add-contribution',
-      hide: true,
-      name: 'add contribution',
-      icon: 'nc-icon nc-notes',
-      layout: '/admin',
-      component: AddContribution,
-      isPrivate: true,
-    },
+    // {
+    //   path: '/add-contribution',
+    //   hide: true,
+    //   name: 'add contribution',
+    //   icon: 'nc-icon nc-notes',
+    //   layout: '/admin',
+    //   component: AddContribution,
+    //   isPrivate: true,
+    // },
     {
       path: '/add-patient',
       hide: true,

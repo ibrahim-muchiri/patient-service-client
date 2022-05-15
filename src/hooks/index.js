@@ -2,14 +2,14 @@ import { useAuthDispatch } from './useDispatch';
 import { useAuthState } from './useAuthState';
 import { useUserState } from './useUserState';
 import { useUserDispatch } from './useUserDispatch';
-import { useContributionDispatch } from './useContributionDispatch';
-import { useContributionContext } from './useContributionContext';
+import { useServiceDispatch } from './useServiceDispatch';
+import { useServiceContext } from './useServiceContext';
 
 export {
   useAuthDispatch,
   useAuthState,
   useUserState,
   useUserDispatch,
-  useContributionContext,
-  useContributionDispatch,
+  useServiceDispatch,
+  useServiceContext,
 };

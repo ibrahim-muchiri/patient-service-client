@@ -8,7 +8,7 @@ import {
   ADD_SERVICE_REQUEST,
   ADD_SERVICE_SUCCESS,
   ADD_SERVICE_FAIL,
-} from 'constants/contributionConstants';
+} from 'constants/serviceConstants';
 
 export const servicesInitialState = {
   services: [],
@@ -16,7 +16,6 @@ export const servicesInitialState = {
 export const ADD_INI_STATE = {
   errorMessage: '',
   loading: false,
-  services: {},
 };
 export const addService = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -66,12 +65,12 @@ export const ServiceListReducer = (state = servicesInitialState, action) => {
     case SERVICE_LIST_REQUEST:
       return {
         loading: true,
-        contributions: [],
+        services: [],
       };
     case SERVICE_LIST_SUCCESS:
       return {
         laoding: false,
-        contributions: action.payload,
+        services: action.payload,
       };
     case SERVICE_LIST_FAIL:
       return {

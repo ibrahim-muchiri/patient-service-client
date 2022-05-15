@@ -10,9 +10,9 @@ import {
   UserStateDispatch,
 } from './userContext';
 import {
-  ContributionsDispatch,
-  ContributionsContext,
-  ContributionsContextProvider,
+  ServiceDispatch,
+  ServiceContext,
+  ServiceContextProvider,
 } from './serviceContext';
 
 export {
@@ -22,7 +22,7 @@ export {
   UserStateContext,
   UserContextProvider,
   UserStateDispatch,
-  ContributionsDispatch,
-  ContributionsContext,
-  ContributionsContextProvider,
+  ServiceDispatch,
+  ServiceContext,
+  ServiceContextProvider,
 };

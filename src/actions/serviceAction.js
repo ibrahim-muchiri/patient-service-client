@@ -9,7 +9,7 @@ import {
   ADD_SERVICE_REQUEST,
   ADD_SERVICE_SUCCESS,
   ADD_SERVICE_FAIL,
-} from '../constants/serviceContants';
+} from '../constants/serviceConstants';
 
 // const API_URL = 'http://localhost:8000/api/v1/';
 const API_URL = 'https://patien-service-app.herokuapp.com/api/v1/';

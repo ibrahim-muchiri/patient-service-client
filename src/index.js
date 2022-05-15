@@ -17,14 +17,14 @@ import Login from 'views/Login';
 import {
   AuthContextProvider,
   UserContextProvider,
-  ContributionsContextProvider,
+  ServiceContextProvider,
 } from '../src/context';
 import PrivateRoutes from '../src/components/HOC/PrivateRoutes';
 
 ReactDOM.render(
   <AuthContextProvider>
     <UserContextProvider>
-      <ContributionsContextProvider>
+      <ServiceContextProvider>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Login} />
@@ -35,7 +35,7 @@ ReactDOM.render(
           </Switch>
         </BrowserRouter>
         ,
-      </ContributionsContextProvider>
+      </ServiceContextProvider>
     </UserContextProvider>
   </AuthContextProvider>,
   document.getElementById('root')

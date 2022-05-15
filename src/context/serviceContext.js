@@ -2,9 +2,6 @@ import React, { createContext, useReducer } from 'react';
 import {
   servicesInitialState,
   ServiceListReducer,
-  getServiceDetail,
-  ADD_INI_STATE,
-  addService,
 } from '../reducers/serviceReducer';
 
 export const ServiceContext = createContext();
@@ -15,24 +12,18 @@ export const ServiceContextProvider = ({ children }) => {
     ServiceListReducer,
     servicesInitialState
   );
-  const [getServiceDetail, serviceDetailDispatch] = useReducer(
-    getServiceDetail,
-    {}
-  );
-  const [addService, addServiceDispatch] = useReducer(
-    addService,
-    ADD_INI_STATE
-  );
+  // const [getServiceDetail, serviceDetailDispatch] = useReducer(
+  //   getServiceDetail,
+  //   {}
+  // );
+  // const [addService, addServiceDispatch] = useReducer(
+  //   addService,
+  //   ADD_INI_STATE
+  // );
 
   return (
-    <ServiceContext.Provider value={{ services, getServiceDetail, addService }}>
-      <ServiceDispatch.Provider
-        value={{
-          serviceDispatch,
-          serviceDetailDispatch,
-          addServiceDispatch,
-        }}
-      >
+    <ServiceContext.Provider value={{ services }}>
+      <ServiceDispatch.Provider value={serviceDispatch}>
         {children}
       </ServiceDispatch.Provider>
     </ServiceContext.Provider>

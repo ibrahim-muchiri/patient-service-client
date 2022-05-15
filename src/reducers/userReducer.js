@@ -28,6 +28,7 @@ export const INITIAL_STATE = {
 };
 
 export const usersInitialState = {
+  loading: false,
   members: [],
 };
 

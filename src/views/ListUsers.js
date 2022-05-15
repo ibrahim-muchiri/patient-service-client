@@ -17,14 +17,11 @@ import {
 } from 'react-bootstrap';
 import { logOut } from 'actions/userActions';
 
-
 function ListUsers() {
   const dispatch = useUserDispatch();
   const usersList = useUserState();
-  const { members, loading } = usersList;
-
-  console.log('The users lists is here: ', members);
-
+  const { members } = usersList;
+  const { loading } = members;
 
   let count = 1;
   const refreshPage = () => {
@@ -47,10 +44,10 @@ function ListUsers() {
       <Container fluid>
         <Row>
           <Col md="12">
-          <Link to="/admin/add-patient">
-            <Button variant="primary" className="my-2">
-           Add a new patient
-            </Button>
+            <Link to="/admin/add-patient">
+              <Button variant="primary" className="my-2">
+                Add a new patient
+              </Button>
             </Link>
             <Card className="strpied-tabled-with-hover">
               <Card.Header>

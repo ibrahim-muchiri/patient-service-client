@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
-import { addContribution } from 'actions/contributionActions';
-import { useContributionContext, useContributionDispatch } from 'hooks';
+// import { addContribution } from 'actions/contributionActions';
+import { useServiceContext, useServiceDispatch } from 'hooks';
 import Loader from 'components/Loader/Loader';
 // react-bootstrap components
 import {
@@ -18,39 +18,39 @@ import {
 } from 'react-bootstrap';
 
 function AddContribution() {
-  const dispatch = useContributionDispatch();
-  const contribDetails = useContributionContext();
-  const history = useHistory();
-  const { contributionsDispatch } = dispatch;
+  //   const dispatch = useContributionDispatch();
+  //   const contribDetails = useContributionContext();
+  //   const history = useHistory();
+  //   const { contributionsDispatch } = dispatch;
 
-  const [amount, setAmount] = useState('');
-  const [amountPaid, setAmountPaid] = useState('');
-  const [dateDeposited, setDateDeposited] = useState('');
+  //   const [amount, setAmount] = useState('');
+  //   const [amountPaid, setAmountPaid] = useState('');
+  //   const [dateDeposited, setDateDeposited] = useState('');
 
-  let getId = history.location.pathname;
-  let newArr = getId.split('/');
-  let userId = parseInt(newArr[newArr.length - 1]);
+  //   let getId = history.location.pathname;
+  //   let newArr = getId.split('/');
+  //   let userId = parseInt(newArr[newArr.length - 1]);
 
-  const { contribution, errorMessage, loading } =
-    contribDetails.addUserContribution;
+  //   const { contribution, errorMessage, loading } =
+  //     contribDetails.addUserContribution;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  //   const handleSubmit = async (e) => {
+  //     e.preventDefault();
 
-    let response = await addContribution(contributionsDispatch, {
-      amount,
-      amountPaid,
-      dateDeposited,
-      userId,
-    });
-    setAmount('');
-    setAmountPaid('');
-    setDateDeposited('');
-    onsole.log('The res: ', errorMessage);
-    if (!response) return;
-  };
+  //     let response = await addContribution(contributionsDispatch, {
+  //       amount,
+  //       amountPaid,
+  //       dateDeposited,
+  //       userId,
+  //     });
+  //     setAmount('');
+  //     setAmountPaid('');
+  //     setDateDeposited('');
+  //     onsole.log('The res: ', errorMessage);
+  //     if (!response) return;
+  //   };
 
-  console.log('The contribDetails: ', contribDetails.addUserContribution);
+  //   console.log('The contribDetails: ', contribDetails.addUserContribution);
 
   return (
     <>
@@ -62,10 +62,10 @@ function AddContribution() {
                 <Card.Title as="h4">Add user contribution</Card.Title>
               </Card.Header>
               <Card.Body>
-                {loading && <Loader />}
+                {/* {loading && <Loader />}
                 {errorMessage ? (
                   <p className={styles.error}>{errorMessage}</p>
-                ) : null}
+                ) : null} */}
 
                 <Form>
                   <Row>
@@ -75,8 +75,8 @@ function AddContribution() {
                         <Form.Control
                           placeholder="amount"
                           type="text"
-                          value={amount}
-                          onChange={(e) => setAmount(e.target.value)}
+                          //   value={amount}
+                          //   onChange={(e) => setAmount(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -88,8 +88,8 @@ function AddContribution() {
                         <Form.Control
                           placeholder="Amount Paid"
                           type="text"
-                          value={amountPaid}
-                          onChange={(e) => setAmountPaid(e.target.value)}
+                          //   value={amountPaid}
+                          //   onChange={(e) => setAmountPaid(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -101,8 +101,8 @@ function AddContribution() {
                         <Form.Control
                           placeholder="Date Amount Deposited"
                           type="date"
-                          value={dateDeposited}
-                          onChange={(e) => setDateDeposited(e.target.value)}
+                          //   value={dateDeposited}
+                          //   onChange={(e) => setDateDeposited(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -112,7 +112,7 @@ function AddContribution() {
                     className="btn-fill pull-right"
                     type="submit"
                     variant="info"
-                    onClick={handleSubmit}
+                    // onClick={handleSubmit}
                   >
                     Submit Contribution
                   </Button>

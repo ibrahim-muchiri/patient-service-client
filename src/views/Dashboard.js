@@ -3,11 +3,10 @@ import ChartistGraph from 'react-chartist';
 import {
   useUserState,
   useUserDispatch,
-  useContributionContext,
-  useContributionDispatch,
+  useServiceContext,
+  useServiceDispatch,
 } from 'hooks';
 import { getAllUsers } from 'actions/userActions';
-import { getAllContributions } from 'actions/contributionActions';
 // react-bootstrap components
 import {
   Badge,
@@ -25,29 +24,29 @@ import {
 } from 'react-bootstrap';
 
 function Dashboard() {
-  const dispatch = useUserDispatch();
-  const usersList = useUserState();
-  const contribDispatch = useContributionDispatch();
-  const contributionsContext = useContributionContext();
-  const { contributionsDispatch } = contribDispatch;
-  const { contributions } = contributionsContext.contributions;
+  // const dispatch = useUserDispatch();
+  // const usersList = useUserState();
+  // const contribDispatch = useContributionDispatch();
+  // const contributionsContext = useContributionContext();
+  // const { contributionsDispatch } = contribDispatch;
+  // const { contributions } = contributionsContext.contributions;
 
-  const { members } = usersList;
+  // const { members } = usersList;
 
-  const totalContributions = [];
+  // const totalContributions = [];
 
-  if (contributions.data) {
-    let amountpaid = contributions.data.map(
-      (contribution) => contribution.amountPaid
-    );
-    const getAmount = amountpaid.reduce((currentAmount, acc) => {
-      return currentAmount + acc;
-    }, 0);
-    totalContributions.push(getAmount);
-    console.log("Let's get the balance: ", contributions.data);
-  }
+  // if (contributions.data) {
+  //   let amountpaid = contributions.data.map(
+  //     (contribution) => contribution.amountPaid
+  //   );
+  //   const getAmount = amountpaid.reduce((currentAmount, acc) => {
+  //     return currentAmount + acc;
+  //   }, 0);
+  //   totalContributions.push(getAmount);
+  //   console.log("Let's get the balance: ", contributions.data);
+  // }
 
-  console.log('The total amount paid: ', totalContributions.join() * 1);
+  // console.log('The total amount paid: ', totalContributions.join() * 1);
 
   // useEffect(() => {
   //   getAllUsers(dispatch.userListDispatch);
@@ -107,7 +106,7 @@ function Dashboard() {
                 <hr></hr>
                 <div className="stats">
                   <i className="far fa-calendar-alt mr-1"></i>
-               Total registered patients
+                  Total registered patients
                 </div>
               </Card.Footer>
             </Card>
@@ -148,14 +147,14 @@ function Dashboard() {
                     </div>
                   </Col>
                   <Col xs="7">
-                    {members.members.data ? (
+                    {/* {members.members.data ? (
                       <div className="numbers">
                         <p className="card-category">All Members</p>
                         <Card.Title as="h4">
                           {members.members.data.length}
                         </Card.Title>
                       </div>
-                    ) : null}
+                    ) : null} */}
                   </Col>
                 </Row>
               </Card.Body>
