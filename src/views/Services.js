@@ -67,7 +67,7 @@ function Services() {
         <Row>
           <Col md="12">
             <Card className="strpied-tabled-with-hover">
-              <Link to="/admin/add-patient">
+              <Link to="/admin/add-service">
                 <Button variant="primary" className="my-2">
                   Add a new service
                 </Button>

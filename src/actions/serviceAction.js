@@ -59,14 +59,14 @@ export const deleteService = async (dispatch, id) => {
 };
 
 export const addService = async (dispatch, servicePayload) => {
-  const { amount, amountPaid, dateDeposited, userId } = userPayload;
+  const { name, price } = servicePayload;
 
   try {
     dispatch({ type: ADD_SERVICE_REQUEST });
 
     const { data } = await axios.post(
       `${API_URL}services/`,
-      { amount, amountPaid, dateDeposited },
+      { name, price },
       config
     );
     console.log('The data i received from the server: ', data);

@@ -7,7 +7,7 @@ import ListUsers from 'views/ListUsers';
 import ServiceDetails from 'views/ServiceDetails.js';
 // import AddContribution from 'views/AddContribution';
 import AddPatient from 'views/addPatient';
-// import AddService from 'views/addService';
+import AddNewService from 'views/addNewService.js';
 import Services from 'views/Services';
 import Typography from 'views/Typography.js';
 import Icons from 'views/Icons.js';
@@ -123,7 +123,7 @@ const appRoutes = {
     //   layout: '/admin',
     //   component: AddContribution,
     //   isPrivate: true,
-    // },
+    // },AddNewService
     {
       path: '/add-patient',
       hide: true,
@@ -131,6 +131,15 @@ const appRoutes = {
       icon: 'nc-icon nc-notes',
       layout: '/admin',
       component: AddPatient,
+      isPrivate: true,
+    },
+    {
+      path: '/add-service',
+      hide: true,
+      name: 'add a new service',
+      icon: 'nc-icon nc-notes',
+      layout: '/admin',
+      component: AddNewService,
       isPrivate: true,
     },
   ],

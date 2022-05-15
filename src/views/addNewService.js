@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
-import { addNewUser } from 'actions/userActions';
-import { useUserState, useUserDispatch } from 'hooks';
+import { addService } from 'actions/serviceAction';
+import { useServiceContext, useServiceDispatch } from 'hooks';
 import Loader from 'components/Loader/Loader';
 // react-bootstrap components
 import {
@@ -18,50 +18,39 @@ import {
 } from 'react-bootstrap';
 
 function AddNewService() {
-  const dispatch = useUserDispatch();
-  const userState = useUserState();
-
-  const { addMembersDispatch } = dispatch;
+  const dispatch = useServiceDispatch();
+  const serviceContext = useServiceContext();
 
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [role, setRole] = useState('patient');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [price, setPrice] = useState('');
   const [message, setMessage] = useState(null);
 
-  const { addMembers } = userState;
-  const { loading, userData, error } = addMembers;
+  //   const { loading, userData, error } = addMembers;
+  console.log('The dispatch: ', dispatch);
 
-  const handleSubmitUser = async (e) => {
+  const handleSubmitService = async (e) => {
     e.preventDefault();
 
-    let response = await addNewUser(addMembersDispatch, {
+    let response = await addService(dispatch.addServiceDispatch, {
       name,
-      email,
-      role,
-      password,
-      passwordConfirm,
+      price,
     });
     console.log('The response: ', response);
     // setMessage('Member added successfully!');
     setName('');
-    setEmail('');
-    setRole('');
-    setPassword('');
-    setPasswordConfirm('');
+    setPrice('');
 
     if (!response) return;
   };
 
-  console.log('The data am expecting: ', userState);
+  console.log('The data am expecting: ', serviceContext);
 
-  console.log('The loading happening: ', loading);
+  // console.log('The loading happening: ', loading);
   useEffect(() => {
-    if (userData) {
-      setMessage(userData.message);
-      console.log('the message: ', userData.message);
-    }
+    //   if (userData) {
+    //     setMessage(userData.message);
+    //     console.log('the message: ', userData.message);
+    //   }
   }, []);
 
   return (
@@ -70,14 +59,14 @@ function AddNewService() {
         <Row>
           <Col md="8">
             <Card>
-              {loading && <Loader />}
+              {/* {loading && <Loader />} */}
               <Card.Header>
                 <Card.Title as="h4">Add a new patient</Card.Title>
               </Card.Header>
 
               <Card.Body>
-                {message ? <h4 style={{ color: 'green' }}>{message}</h4> : null}
-                {error ? <p style={{ color: 'red' }}>{error}</p> : null}
+                {/* {message ? <h4 style={{ color: 'green' }}>{message}</h4> : null}
+                {error ? <p style={{ color: 'red' }}>{error}</p> : null} */}
                 <Form>
                   <Row>
                     <Col md="8">
@@ -97,10 +86,10 @@ function AddNewService() {
                       <Form.Group>
                         <label>Service Price</label>
                         <Form.Control
-                          placeholder="Email"
+                          placeholder="Price"
                           type="text"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          value={price}
+                          onChange={(e) => setPrice(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -116,12 +105,13 @@ function AddNewService() {
                   </Button> */}
                   <Button
                     className="btn-fill pull-right"
-                    onClick={handleSubmitUser}
+                    onClick={handleSubmitService}
                     type="submit"
                     variant="info"
-                    disabled={loading}
+                    // disabled={loading}
                   >
-                    {loading ? <Spinner animation="grow" /> : '  Add Member'}
+                    {/* {loading ? <Spinner animation="grow" /> : '  Add Member'} */}
+                    Add Service
                   </Button>
 
                   <div className="clearfix"></div>
