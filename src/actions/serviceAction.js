@@ -22,7 +22,7 @@ const config = {
 export const getSingleService = async (dispatch, serviceId) => {
   try {
     dispatch({ type: SERVICE_DETAIL_REQUEST });
-    const { data } = await axios.get(`${API_URL}/services/${serviceId}/`);
+    const { data } = await axios.get(`${API_URL}services/${serviceId}/`);
     console.log('The contribution details: ', data);
     if (data) {
       dispatch({ type: SERVICE_DETAIL_SUCCESS, payload: data });

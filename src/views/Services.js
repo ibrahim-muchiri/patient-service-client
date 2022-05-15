@@ -37,7 +37,7 @@ const servs = [
   },
 ];
 function Services() {
-  const serviceDispatch = useServiceDispatch();
+  const dispatch = useServiceDispatch();
   const servicesContext = useServiceContext();
   const {
     loading,
@@ -49,8 +49,8 @@ function Services() {
 
   let count = 1;
   useEffect(() => {
-    getAllServices(serviceDispatch);
-  }, [serviceDispatch]);
+    getAllServices(dispatch.serviceDispatch);
+  }, [dispatch.serviceDispatch]);
 
   return (
     <>
@@ -80,7 +80,7 @@ function Services() {
                   <tbody>
                     {data
                       ? data.service.map((serve) => (
-                          <tr key={serve.id}>
+                          <tr key={serve._id}>
                             <td>{count++}.</td>
                             <td>{serve.name}</td>
                             <td>{serve.price}</td>

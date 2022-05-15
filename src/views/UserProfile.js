@@ -24,11 +24,8 @@ function User() {
  
 
   let getId = history.location.pathname;
-  console.log("The single user details: ", userDetails);
-  console.log("pathname", getId);
   let newArr = getId.split('/');
   let id = newArr[newArr.length - 1];
-  console.log("The user id is here: ", id);
   useEffect(() => {
     getUserDetails(dispatch.userDetailsDispatch, id);
   }, [getId]);

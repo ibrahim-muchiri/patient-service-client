@@ -17,7 +17,7 @@ export const ADD_INI_STATE = {
   errorMessage: '',
   loading: false,
 };
-export const addService = (state = INITIAL_STATE, action) => {
+export const addServiceReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_SERVICE_REQUEST:
       return {
@@ -39,7 +39,7 @@ export const addService = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
-export const getServiceDetail = (state = {}, action) => {
+export const getServiceDetailReducer = (state = {}, action) => {
   switch (action.type) {
     case SERVICE_DETAIL_REQUEST:
       return {
