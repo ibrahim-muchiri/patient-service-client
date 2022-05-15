@@ -18,7 +18,7 @@ export const ADD_INI_STATE = {
   loading: false,
   services: {},
 };
-export const addContribution = (state = INITIAL_STATE, action) => {
+export const addService = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_SERVICE_REQUEST:
       return {

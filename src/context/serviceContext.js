@@ -1,42 +1,40 @@
 import React, { createContext, useReducer } from 'react';
 import {
-  contributionsInitialState,
-  ContributionsListReducer,
-  getContributionDetail,
+  servicesInitialState,
+  ServiceListReducer,
+  getServiceDetail,
   ADD_INI_STATE,
-  addContribution,
+  addService,
 } from '../reducers/serviceReducer';
 
-export const ContributionsContext = createContext();
-export const ContributionsDispatch = createContext();
+export const ServiceContext = createContext();
+export const ServiceDispatch = createContext();
 
-export const ContributionsContextProvider = ({ children }) => {
-  const [contributions, contributionsDispatch] = useReducer(
-    ContributionsListReducer,
-    contributionsInitialState
+export const ServiceContextProvider = ({ children }) => {
+  const [services, serviceDispatch] = useReducer(
+    ServiceListReducer,
+    servicesInitialState
   );
-  const [contributionDetail, contribDetailDispatch] = useReducer(
-    getContributionDetail,
+  const [getServiceDetail, serviceDetailDispatch] = useReducer(
+    getServiceDetail,
     {}
   );
-  const [addUserContribution, addUserContribDispatch] = useReducer(
-    addContribution,
+  const [addService, addServiceDispatch] = useReducer(
+    addService,
     ADD_INI_STATE
   );
 
   return (
-    <ContributionsContext.Provider
-      value={{ contributions, contributionDetail, addUserContribution }}
-    >
-      <ContributionsDispatch.Provider
+    <ServiceContext.Provider value={{ services, getServiceDetail, addService }}>
+      <ServiceDispatch.Provider
         value={{
-          contributionsDispatch,
-          contribDetailDispatch,
-          addUserContribDispatch,
+          serviceDispatch,
+          serviceDetailDispatch,
+          addServiceDispatch,
         }}
       >
         {children}
-      </ContributionsDispatch.Provider>
-    </ContributionsContext.Provider>
+      </ServiceDispatch.Provider>
+    </ServiceContext.Provider>
   );
 };
