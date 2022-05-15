@@ -13,7 +13,7 @@ import {
   ContributionsDispatch,
   ContributionsContext,
   ContributionsContextProvider,
-} from './contributionsContext';
+} from './serviceContext';
 
 export {
   AuthContextProvider,

@@ -5,7 +5,7 @@ import {
   getContributionDetail,
   ADD_INI_STATE,
   addContribution,
-} from '../reducers/contributionReducer';
+} from '../reducers/serviceReducer';
 
 export const ContributionsContext = createContext();
 export const ContributionsDispatch = createContext();
