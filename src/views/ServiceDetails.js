@@ -34,11 +34,11 @@ function ServiceDetails() {
     serviceData = { ...service.data.service };
   }
   console.log('The service loading: ', loading);
-  console.log('The service details: ');
+  console.log('The service details: ', serviceData);
 
   useEffect(() => {
     getSingleService(dispatch.serviceDetailDispatch, id);
-  }, [getId]);
+  }, [id]);
 
   return (
     <>

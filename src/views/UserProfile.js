@@ -21,7 +21,6 @@ function User() {
   const userData = useUserState();
   const history = useHistory();
   const { userDetails } = userData;
- 
 
   let getId = history.location.pathname;
   let newArr = getId.split('/');
@@ -35,7 +34,7 @@ function User() {
       <Container fluid>
         <Row>
           <Col md="8">
-            {userDetails.user? (
+            {userDetails.user ? (
               <Card>
                 <Card.Header>
                   <Card.Title as="h4">Edit Profile</Card.Title>
@@ -54,7 +53,7 @@ function User() {
                           ></Form.Control>
                         </Form.Group>
                       </Col>
-                     
+
                       <Col className="pl-1" md="4">
                         <Form.Group>
                           <label htmlFor="exampleInputEmail1">
@@ -79,10 +78,8 @@ function User() {
                           ></Form.Control>
                         </Form.Group>
                       </Col>
-                     
-                     
                     </Row>
-                  
+
                     {/* <Row
                     <Col md="12">
                       <Form.Group>
@@ -110,63 +107,6 @@ function User() {
                 </Card.Body>
               </Card>
             ) : null}
-          </Col>
-          <Col md="4">
-            <Card className="card-user">
-              <div className="card-image">
-                <img
-                  alt="..."
-                  src={
-                    require('assets/img/photo-1431578500526-4d9613015464.jpeg')
-                      .default
-                  }
-                ></img>
-              </div>
-              <Card.Body>
-                {userDetails.user ? (
-                  <div className="author">
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        className="avatar border-gray"
-                        src={require('assets/img/faces/face-3.jpg').default}
-                      ></img>
-                      <h5 className="title">
-                        {userDetails.user.patient.name} 
-                      </h5>
-                    </a>
-                    {/* <p className="description">michael24</p> */}
-                  </div>
-                ) : null}
-              </Card.Body>
-              <hr></hr>
-              <div className="button-container mr-auto ml-auto">
-                <Button
-                  className="btn-simple btn-icon"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  variant="link"
-                >
-                  <i className="fab fa-facebook-square"></i>
-                </Button>
-                <Button
-                  className="btn-simple btn-icon"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  variant="link"
-                >
-                  <i className="fab fa-twitter"></i>
-                </Button>
-                <Button
-                  className="btn-simple btn-icon"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  variant="link"
-                >
-                  <i className="fab fa-google-plus-square"></i>
-                </Button>
-              </div>
-            </Card>
           </Col>
         </Row>
       </Container>

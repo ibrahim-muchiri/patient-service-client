@@ -54,7 +54,7 @@ function Services() {
   const refreshPage = () => {
     window.location.reload(true);
   };
-  const handleClick = async (serviceId) => {
+  const handleDelete = async (serviceId) => {
     let response = await deleteService(dispatch.deleteDispatch, serviceId);
     // refreshPage();
 
@@ -111,7 +111,7 @@ function Services() {
                               {' | '}
                               <Button
                                 variant="warning"
-                                onClick={() => handleClick(serve._id)}
+                                onClick={() => handleDelete(serve._id)}
                               >
                                 Delete service
                               </Button>
