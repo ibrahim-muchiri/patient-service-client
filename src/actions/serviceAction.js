@@ -83,6 +83,26 @@ export const addService = async (dispatch, servicePayload) => {
   }
 };
 
+export const getUserDetails = async (dispatch, id) => {
+  try {
+    dispatch({ type: USER_DETAIL_REQUEST });
+    const { data } = await axios.get(`${API_URL}patients/${id}`);
+
+    console.log("inside user details action: ", data);
+
+    if (data) {
+      dispatch({ type: USER_DETAIL_SUCCESS, payload: data.data });
+    }
+  } catch (error) {
+    dispatch({
+      type: USER_DETAIL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 export const getAllServices = async (dispatch) => {
   try {
     dispatch({ type: SERVICE_LIST_REQUEST });

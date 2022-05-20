@@ -25,8 +25,15 @@ function AddNewService() {
   const [price, setPrice] = useState('');
   const [message, setMessage] = useState(null);
 
-  //   const { loading, userData, error } = addMembers;
-  console.log('The dispatch: ', dispatch);
+  const {
+    loading,
+    errorMessage,
+    service
+  } = serviceContext;
+ 
+  if(service){
+    const { status, data } = service; 
+  }
 
   const handleSubmitService = async (e) => {
     e.preventDefault();
@@ -73,7 +80,7 @@ function AddNewService() {
                       <Form.Group>
                         <label>Service Name</label>
                         <Form.Control
-                          placeholder="Full Name"
+                          placeholder="Service Name"
                           type="text"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
