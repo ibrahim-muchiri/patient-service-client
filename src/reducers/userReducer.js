@@ -16,6 +16,9 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  EDIT_USER_REQUEST,
+  EDIT_USER_FAIL,
+  EDIT_USER_SUCCESS,
 } from '../constants/userConstants';
 
 let token = localStorage.getItem('AUTH_TOKEN') ? true : false;
@@ -116,6 +119,29 @@ export const AddNewUserReducer = (state = {}, action) => {
       };
     default:
       return state;
+  }
+};
+// edit user
+export const EditUserDetails = (state = {}, action) => {
+  switch (action.type) {
+    case EDIT_USER_REQUEST:
+      return {
+        loading: true,
+      };
+    case EDIT_USER_SUCCESS:
+      return {
+        laoding: false,
+        userData: action.payload,
+      };
+    case EDIT_USER_FAIL:
+      return {
+        laoding: false,
+        error: action.payload,
+      };
+    default:
+      return {
+        ...state,
+      };
   }
 };
 //auth reducer

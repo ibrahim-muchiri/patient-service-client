@@ -38,7 +38,7 @@ function ServiceDetails() {
 
   useEffect(() => {
     getSingleService(dispatch.serviceDetailDispatch, id);
-  }, [id]);
+  }, []);
 
   return (
     <>

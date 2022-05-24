@@ -1,7 +1,6 @@
 import axios from 'axios';
 import setAuthToken from '../commons/setAuthToken';
 
-
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_FAIL,
@@ -19,6 +18,9 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  EDIT_USER_REQUEST,
+  EDIT_USER_FAIL,
+  EDIT_USER_SUCCESS,
 } from '../constants/userConstants';
 
 // const API_URL = 'http://localhost:8000/api/v1/';
@@ -30,12 +32,12 @@ const config = {
   },
 };
 export const addNewUser = async (dispatch, userPayload) => {
-  const { name, email, role, password, passwordConfirm} = userPayload;
+  const { name, email, role, password, passwordConfirm } = userPayload;
   try {
     dispatch({ type: ADD_USER_REQUEST });
     const { data } = await axios.post(
       `${API_URL}patients`,
-      { name, email, role, password ,passwordConfirm},
+      { name, email, role, password, passwordConfirm },
       config
     );
 
@@ -45,6 +47,26 @@ export const addNewUser = async (dispatch, userPayload) => {
   } catch (error) {
     dispatch({
       type: ADD_USER_FAIL,
+      payload:
+        error.response && error.response.adata.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+export const editUserDetails = async (dispatch, userPayload) => {
+  const { name, email } = payload;
+  try {
+    dispatch({ type: EDIT_USER_REQUEST });
+    const { data } = await axios.put(
+      `${API_URL}patients`,
+      { name, email },
+      config
+    );
+    dispatch({ type: EDIT_USER_SUCCESS, payload: userPayload });
+  } catch (error) {
+    dispatch({
+      type: EDIT_USER_FAIL,
       payload:
         error.response && error.response.adata.message
           ? error.response.data.message
@@ -83,9 +105,9 @@ export const loginUser = async (dispatch, loginPayload) => {
     setAuthToken(data.data);
     // console.log('The data i received from the server: ', decoded);
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-  
+
     localStorage.setItem('AUTH_TOKEN', `Bearer ${data.token}`);
-    console.log("payload: ", data);
+    console.log('payload: ', data);
     return data;
   } catch (error) {
     dispatch({
@@ -102,7 +124,7 @@ export const getUserDetails = async (dispatch, id) => {
     dispatch({ type: USER_DETAIL_REQUEST });
     const { data } = await axios.get(`${API_URL}patients/${id}`);
 
-    console.log("inside user details action: ", data);
+    console.log('inside user details action: ', data);
 
     if (data) {
       dispatch({ type: USER_DETAIL_SUCCESS, payload: data.data });
@@ -121,9 +143,9 @@ export const getAllUsers = async (dispatch) => {
   try {
     dispatch({ type: USER_LIST_REQUEST });
     const { data } = await axios.get(`${API_URL}patients/`);
-    
+
     dispatch({ type: USER_LIST_SUCCESS, payload: data.data.patient });
-    console.log("fkjfkjekfjeflkjfkj: ", data.data.patient);
+    console.log('fkjfkjekfjeflkjfkj: ', data.data.patient);
   } catch (error) {
     dispatch({
       USER_LIST_FAIL,
