@@ -162,7 +162,7 @@ function Dashboard() {
                 <hr></hr>
                 <div className="stats">
                   <i className="fas fa-redo mr-1"></i>
-                  Current available members
+                  Current available patients
                 </div>
               </Card.Footer>
             </Card>
