@@ -80,6 +80,16 @@ function User() {
                       </Col>
                     </Row>
 
+                    <Button
+                      className="btn-fill pull-right"
+                      // onClick={handleSubmitUser}
+                      type="submit"
+                      variant="info"
+                      // disabled={loading}
+                    >
+                      {/* {loading ? <Spinner animation="grow" /> : '  Edit User'} */}
+                      Edit User
+                    </Button>
                     {/* <Row
                     <Col md="12">
                       <Form.Group>
