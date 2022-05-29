@@ -101,15 +101,6 @@ function AddNewService() {
                       </Form.Group>
                     </Col>
                   </Row>
-
-                  {/* <Button
-                    className="btn-fill pull-right"
-                    type="submit"
-                    variant="info"
-                    onClick={handleSubmitUser}
-                  >
-                    Add Member
-                  </Button> */}
                   <Button
                     className="btn-fill pull-right"
                     onClick={handleSubmitService}

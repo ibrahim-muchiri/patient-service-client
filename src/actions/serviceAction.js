@@ -12,6 +12,9 @@ import {
   DELETE_SERVICE_REQUEST,
   DELETE_SERVICE_SUCCESS,
   DELETE_SERVICE_FAIL,
+  EDIT_SERVICE_REQUEST,
+  EDIT_SERVICE_SUCCESS,
+  EDIT_SERVICE_FAIL,
 } from '../constants/serviceConstants';
 
 // const API_URL = 'http://localhost:8000/api/v1/';
@@ -41,6 +44,30 @@ export const getSingleService = async (dispatch, serviceId) => {
   }
 };
 
+export const editServiceDetails = async (
+  dispatch,
+  serviceId,
+  servicePayload
+) => {
+  const { name, price } = servicePayload;
+  try {
+    dispatch({ type: EDIT_SERVICE_REQUEST });
+    const { data } = await axios.patch(
+      `${API_URL}services/${serviceId}`,
+      { name, price },
+      config
+    );
+    dispatch({ type: EDIT_SERVICE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: EDIT_SERVICE_FAIL,
+      payload:
+        error.response && error.response.adata.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 export const deleteService = async (dispatch, id) => {
   try {
     dispatch({ type: DELETE_SERVICE_REQUEST });
@@ -88,7 +115,7 @@ export const getUserDetails = async (dispatch, id) => {
     dispatch({ type: USER_DETAIL_REQUEST });
     const { data } = await axios.get(`${API_URL}patients/${id}`);
 
-    console.log("inside user details action: ", data);
+    console.log('inside user details action: ', data);
 
     if (data) {
       dispatch({ type: USER_DETAIL_SUCCESS, payload: data.data });

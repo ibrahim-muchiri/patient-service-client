@@ -6,6 +6,7 @@ import {
   deleteServiceReducer,
   addServiceReducer,
   ADD_INI_STATE,
+  editServiceDetails,
 } from '../reducers/serviceReducer';
 
 export const ServiceContext = createContext();
@@ -21,6 +22,7 @@ export const ServiceContextProvider = ({ children }) => {
     {}
   );
   const [deleteMsg, deleteDispatch] = useReducer(deleteServiceReducer, {});
+  const [editService, editServiceDispatch] = useReducer(editServiceDetails, {});
   const [addService, addServiceDispatch] = useReducer(
     addServiceReducer,
     ADD_INI_STATE
@@ -33,6 +35,7 @@ export const ServiceContextProvider = ({ children }) => {
         serviceDetails,
         deleteMsg,
         addService,
+        editService,
       }}
     >
       <ServiceDispatch.Provider
@@ -41,6 +44,7 @@ export const ServiceContextProvider = ({ children }) => {
           serviceDetailDispatch,
           deleteDispatch,
           addServiceDispatch,
+          editServiceDispatch,
         }}
       >
         {children}

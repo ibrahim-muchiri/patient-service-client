@@ -101,13 +101,13 @@ function Services() {
                             <td>{serve.ratingsAverage}</td>
                             <td>{serve.ratingsQuantity}</td>
                             <td>
-                              <Button variant="info">
-                                <Link
-                                  to={`/admin/service-details/${serve._id}`}
-                                >
-                                  Details
-                                </Link>
-                              </Button>
+                              <Link to={`/admin/service-details/${serve._id}`}>
+                                <Button variant="info">Details</Button>
+                              </Link>
+                              {' | '}
+                              <Link to={`/admin/update-service/${serve._id}`}>
+                                <Button variant="success">Edit Service</Button>
+                              </Link>
                               {' | '}
                               <Button
                                 variant="warning"

@@ -1,6 +1,8 @@
 import Dashboard from 'views/Dashboard.js';
 import Login from './views/Login.js';
 import UserProfile from 'views/UserProfile.js';
+import EditUser from 'views/editUser.js';
+import EditService from 'views/editService.js';
 // import TableList from 'views/ListUsers';
 import ListUsers from 'views/ListUsers';
 // import ContributionDetails from 'views/ContributionDetails';
@@ -103,6 +105,24 @@ const appRoutes = {
       name: 'User Profile',
       icon: 'nc-icon nc-circle-09',
       component: UserProfile,
+      layout: '/admin',
+      isPrivate: true,
+    },
+    {
+      path: '/update-user',
+      hide: true,
+      name: 'Edit User',
+      icon: 'nc-icon nc-circle-09',
+      component: EditUser,
+      layout: '/admin',
+      isPrivate: true,
+    },
+    {
+      path: '/update-service',
+      hide: true,
+      name: 'Edit Service',
+      icon: 'nc-icon nc-circle-09',
+      component: EditService,
       layout: '/admin',
       isPrivate: true,
     },

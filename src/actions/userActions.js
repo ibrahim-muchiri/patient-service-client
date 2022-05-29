@@ -54,16 +54,16 @@ export const addNewUser = async (dispatch, userPayload) => {
     });
   }
 };
-export const editUserDetails = async (dispatch, userPayload) => {
-  const { name, email } = payload;
+export const editUserDetails = async (dispatch, userId, userPayload) => {
+  const { email, name } = userPayload;
   try {
     dispatch({ type: EDIT_USER_REQUEST });
-    const { data } = await axios.put(
-      `${API_URL}patients`,
-      { name, email },
+    const { data } = await axios.patch(
+      `${API_URL}patients/${userId}`,
+      { email, name },
       config
     );
-    dispatch({ type: EDIT_USER_SUCCESS, payload: userPayload });
+    dispatch({ type: EDIT_USER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
       type: EDIT_USER_FAIL,
