@@ -56,7 +56,11 @@ function Dashboard() {
   return (
     <>
       <Container fluid>
-        <Row>
+
+      <img src='./views/oasis.jpg' alt='flower in chania' />
+
+            {/*
+        <Row>       
           <Col lg="3" sm="6">
             <Card className="card-stats">
               <Card.Body>
@@ -82,8 +86,9 @@ function Dashboard() {
                 </div>
               </Card.Footer>
             </Card>
-          </Col>
-          <Col lg="3" sm="6">
+          </Col> */}
+
+          {/* <Col lg="3" sm="6">
             <Card className="card-stats">
               <Card.Body>
                 <Row>
@@ -97,10 +102,12 @@ function Dashboard() {
                       <p className="card-category">Total Contribution</p>
                       <Card.Title as="h4">
                         {/* $ {totalContributions.join() * 1} */}
-                      </Card.Title>
+                      {/* </Row></Card.Title>
                     </div>
-                  </Col>
-                </Row>
+                  </Col> */}
+
+
+                {/* </Row>
               </Card.Body>
               <Card.Footer>
                 <hr></hr>
@@ -110,7 +117,7 @@ function Dashboard() {
                 </div>
               </Card.Footer>
             </Card>
-          </Col>
+          </Col> */}
           {/* <Col lg="3" sm="6">
             <Card className="card-stats">
               <Card.Body>
@@ -137,7 +144,9 @@ function Dashboard() {
               </Card.Footer>
             </Card>
           </Col> */}
-          <Col lg="3" sm="6">
+
+
+          {/* <Col lg="3" sm="6">
             <Card className="card-stats">
               <Card.Body>
                 <Row>
@@ -146,7 +155,9 @@ function Dashboard() {
                       <i className="nc-icon nc-favourite-28 text-primary"></i>
                     </div>
                   </Col>
-                  <Col xs="7">
+                  <Col xs="7"> */}
+
+
                     {/* {members.members.data ? (
                       <div className="numbers">
                         <p className="card-category">All Members</p>
@@ -155,19 +166,21 @@ function Dashboard() {
                         </Card.Title>
                       </div>
                     ) : null} */}
-                  </Col>
+
+                  {/* </Col>
                 </Row>
               </Card.Body>
               <Card.Footer>
                 <hr></hr>
                 <div className="stats">
                   <i className="fas fa-redo mr-1"></i>
-                  Current available patients
+                  Current available
                 </div>
               </Card.Footer>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
+
         {/* <Row>
           <Col md="8">
             <Card>
