@@ -1,23 +1,48 @@
-import React, { useEffect } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import { useUserState, useUserDispatch } from 'hooks';
 import { getUserDetails, editUserDetails } from 'actions/userActions';
 import Loader from 'components/Loader/Loader';
 // react-bootstrap components
-import { Button, Card, Form, Container, Row, Col } from 'react-bootstrap';
+import {
+  Badge,
+  Button,
+  Card,
+  Form,
+  Navbar,
+  Nav,
+  Container,
+  Row,
+  Col,
+} from 'react-bootstrap';
 
-function User() {
+function EditUser() {
   const dispatch = useUserDispatch();
   const userData = useUserState();
   const history = useHistory();
   const { userDetails } = userData;
 
   const { userDetailsDispatch, editUserDetailsDispatch } = dispatch;
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
   // console.log('The user dispatch details: ', editUserDetailsDispatch);
 
   let getId = history.location.pathname;
   let newArr = getId.split('/');
   let id = newArr[newArr.length - 1];
+  console.log('The user id to edit: ', id);
+  const handleEditUser = async (e) => {
+    e.preventDefault();
+
+    let response = await editUserDetails(editUserDetailsDispatch, id, {
+      name,
+      email,
+    });
+    // setMessage('Member added successfully!');
+    if (!response) return;
+    console.log('The response from the server: ', response);
+  };
 
   useEffect(() => {
     getUserDetails(userDetailsDispatch, id);
@@ -57,6 +82,7 @@ function User() {
                             placeholder="Email"
                             type="email"
                             defaultValue={userDetails.user.patient.email}
+                            onChange={(e) => setEmail(e.target.value)}
                           ></Form.Control>
                         </Form.Group>
                       </Col>
@@ -69,14 +95,22 @@ function User() {
                             placeholder="Company"
                             type="text"
                             defaultValue={userDetails.user.patient.name}
+                            onChange={(e) => setName(e.target.value)}
                           ></Form.Control>
                         </Form.Group>
                       </Col>
                     </Row>
 
-                    <Link to="/admin/patients">
-                      <Button>Back to users</Button>
-                    </Link>
+                    <Button
+                      className="btn-fill pull-right"
+                      onClick={handleEditUser}
+                      type="submit"
+                      variant="info"
+                      // disabled={loading}
+                    >
+                      {/* {loading ? <Spinner animation="grow" /> : '  Edit User'} */}
+                      Edit User
+                    </Button>
                     <div className="clearfix"></div>
                   </Form>
                 </Card.Body>
@@ -89,4 +123,4 @@ function User() {
   );
 }
 
-export default User;
+export default EditUser;

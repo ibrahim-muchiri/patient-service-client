@@ -77,11 +77,13 @@ function ListUsers() {
                             <td>{member.name}</td>
                             <td>{member.email}</td>
                             <td>
-                              <Button variant="info">
-                                <Link to={`/admin/user/${member._id}`}>
-                                  View User
-                                </Link>
-                              </Button>
+                              <Link to={`/admin/user/${member._id}`}>
+                                <Button variant="info">View User</Button>
+                              </Link>
+                              {' | '}
+                              <Link to={`/admin/update-user/${member._id}`}>
+                                <Button variant="success">Edit user</Button>
+                              </Link>
                               {' | '}
                               <Button
                                 variant="warning"

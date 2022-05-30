@@ -7,6 +7,7 @@ import {
   useServiceDispatch,
 } from 'hooks';
 import { getAllUsers } from 'actions/userActions';
+import { getAllServices } from 'actions/serviceAction';
 // react-bootstrap components
 import {
   Badge,
@@ -24,44 +25,40 @@ import {
 } from 'react-bootstrap';
 
 function Dashboard() {
-  // const dispatch = useUserDispatch();
-  // const usersList = useUserState();
-  // const contribDispatch = useContributionDispatch();
-  // const contributionsContext = useContributionContext();
-  // const { contributionsDispatch } = contribDispatch;
-  // const { contributions } = contributionsContext.contributions;
+  const dispatch = useUserDispatch();
+  const serviceDispatch = useServiceDispatch();
 
-  // const { members } = usersList;
+  const userStateContext = useUserState();
+  const { members } = userStateContext;
+  const serviceStateContext = useServiceContext();
+  const {
+    services: {
+      services: { data },
+    },
+  } = serviceStateContext;
 
-  // const totalContributions = [];
+  console.log('users list: ', members);
+  console.log('The service list: ', data);
 
-  // if (contributions.data) {
-  //   let amountpaid = contributions.data.map(
-  //     (contribution) => contribution.amountPaid
-  //   );
-  //   const getAmount = amountpaid.reduce((currentAmount, acc) => {
-  //     return currentAmount + acc;
-  //   }, 0);
-  //   totalContributions.push(getAmount);
-  //   console.log("Let's get the balance: ", contributions.data);
-  // }
-
-  // console.log('The total amount paid: ', totalContributions.join() * 1);
-
-  // useEffect(() => {
-  //   getAllUsers(dispatch.userListDispatch);
-  //   getAllContributions(contributionsDispatch);
-  // }, [dispatch.dispatch, contributionsDispatch]);
+  useEffect(() => {
+    getAllUsers(dispatch.userListDispatch);
+    getAllServices(serviceDispatch.serviceDispatch);
+  }, []);
 
   return (
     <>
       <Container fluid>
+<<<<<<< HEAD
 
       <img src='./views/oasis.jpg' alt='flower in chania' />
 
             {/*
         <Row>       
           <Col lg="3" sm="6">
+=======
+        <Row>
+          <Col lg="4" sm="6">
+>>>>>>> 5774b5c5cd417a8b793292f449ae94db4476f90f
             <Card className="card-stats">
               <Card.Body>
                 <Row>
@@ -72,6 +69,7 @@ function Dashboard() {
                   </Col>
                   <Col xs="7">
                     <div className="numbers">
+<<<<<<< HEAD
                       <p className="card-category">Target Contribution 2022</p>
                       <Card.Title as="h4">$ 100,000</Card.Title>
                     </div>
@@ -103,6 +101,12 @@ function Dashboard() {
                       <Card.Title as="h4">
                         {/* $ {totalContributions.join() * 1} */}
                       {/* </Row></Card.Title>
+=======
+                      <p className="card-category">Total Patients Registered</p>
+                      <Card.Title as="h4">
+                        {members ? members.members.length : null}
+                      </Card.Title>
+>>>>>>> 5774b5c5cd417a8b793292f449ae94db4476f90f
                     </div>
                   </Col> */}
 
@@ -112,11 +116,12 @@ function Dashboard() {
               <Card.Footer>
                 <hr></hr>
                 <div className="stats">
-                  <i className="far fa-calendar-alt mr-1"></i>
-                  Total registered patients
+                  <i className="fas fa-redo mr-1"></i>
+                  Patients Registered
                 </div>
               </Card.Footer>
             </Card>
+<<<<<<< HEAD
           </Col> */}
           {/* <Col lg="3" sm="6">
             <Card className="card-stats">
@@ -147,6 +152,10 @@ function Dashboard() {
 
 
           {/* <Col lg="3" sm="6">
+=======
+          </Col>
+          <Col lg="4" sm="6">
+>>>>>>> 5774b5c5cd417a8b793292f449ae94db4476f90f
             <Card className="card-stats">
               <Card.Body>
                 <Row>
@@ -155,6 +164,7 @@ function Dashboard() {
                       <i className="nc-icon nc-favourite-28 text-primary"></i>
                     </div>
                   </Col>
+<<<<<<< HEAD
                   <Col xs="7"> */}
 
 
@@ -168,17 +178,33 @@ function Dashboard() {
                     ) : null} */}
 
                   {/* </Col>
+=======
+                  <Col xs="7">
+                    <div className="numbers">
+                      <p className="card-category">Total Services</p>
+                      <Card.Title as="h4">
+                        {data ? data.service.length : null}
+                      </Card.Title>
+                    </div>
+                  </Col>
+>>>>>>> 5774b5c5cd417a8b793292f449ae94db4476f90f
                 </Row>
               </Card.Body>
               <Card.Footer>
                 <hr></hr>
                 <div className="stats">
+<<<<<<< HEAD
                   <i className="fas fa-redo mr-1"></i>
                   Current available
+=======
+                  <i className="far fa-calendar-alt mr-1"></i>
+                  Total services offered
+>>>>>>> 5774b5c5cd417a8b793292f449ae94db4476f90f
                 </div>
               </Card.Footer>
             </Card>
           </Col>
+<<<<<<< HEAD
         </Row> */}
 
         {/* <Row>
@@ -667,6 +693,9 @@ function Dashboard() {
             </Card>
           </Col>
         </Row> */}
+=======
+        </Row>
+>>>>>>> 5774b5c5cd417a8b793292f449ae94db4476f90f
       </Container>
     </>
   );
